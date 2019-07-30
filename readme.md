@@ -1,16 +1,8 @@
-# Laravel + Apache + Docker
+# Address book 
 
 ## Description
-Start developing a fresh Laravel application with `docker` using `docker-compose`.
+Simple dockerised Laravel app with MariaDB 
 
-The images used in this repo is `php:7.2-apache` and `mysql:5.7`. The goal is to make setting up the development as simple as possible.
-
-## Up and running
-Clone the repo:
-```
-$ git clone https://github.com/laravel/laravel.git
-$ cd laravel
-```
 
 Build the images and start the services:
 ```
@@ -38,16 +30,6 @@ mysql>
 Run `composer` command, example:
 ```
 $ ./composer dump-autoload
-Generating optimized autoload files> Illuminate\Foundation\ComposerScripts::postAutoloadDump
-> @php artisan package:discover --ansi
-Discovered Package: beyondcode/laravel-dump-server
-Discovered Package: fideloper/proxy
-Discovered Package: laravel/tinker
-Discovered Package: nesbot/carbon
-Discovered Package: nunomaduro/collision
-Package manifest generated successfully.
-Generated optimized autoload files containing 3527 classes
-```
 
 ### php-artisan
 Run `php artisan` commands, example:
@@ -61,12 +43,3 @@ Controller created successfully.
 Run `./vendor/bin/phpunit` to execute tests, example:
 ```
 $ ./phpunit --group=failing
-vendor/bin/phpunit --group=failing
-PHPUnit 7.5.8 by Sebastian Bergmann and contributors.
-
-
-
-Time: 34 ms, Memory: 6.00 MB
-
-No tests executed!
-```
