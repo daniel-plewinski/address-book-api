@@ -20,12 +20,15 @@ services:
           - app
 
   mysql-db:
-    image: mariadb
+    image: mysql:5.7
+    ports:
+      - 3307:3306
     container_name: mysql-db
+    command: ["mysqld", "--explicit_defaults_for_timestamp", "--innodb_use_native_aio=0"]
     volumes:
-      - ./run/var:/var/lib/mysql/data
+      - ./run/var:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=securerootpassword
+      - MYSQL_ROOT_PASSWORD=secure
       - MYSQL_DATABASE=${DB_DATABASE}
       - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}

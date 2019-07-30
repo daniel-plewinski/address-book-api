@@ -1,4 +1,4 @@
 #!/bin/bash
 docker exec mysqld --initialize-insecure
 
-docker exec -it mysql-db bash -c "mysql -u dbuser -psecret db"
+docker exec -it mysql-db bash -c "mysql -u homesetead -psecret homesetead"

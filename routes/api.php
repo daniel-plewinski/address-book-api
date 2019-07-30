@@ -17,4 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/addresses', 'AddressesController@index');
+Route::post('/addresses', 'AddressesController@store');
+
 
