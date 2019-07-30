@@ -8,11 +8,24 @@ use Illuminate\Support\Facades\Validator;
 
 class AddressesController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
-        $addresses = Address::all();
-        return $addresses;
+        $data = $request->get('search');
+
+        $addresses = Address::where('surname', 'like', "%{$data}%")
+                    ->orWhere('phone', 'like', "%{$data}%")
+
+                    ->paginate(15);
+
+        if ($addresses->count()) {
+            return response()->json([
+                'data' => $addresses
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'No addresses found'
+            ], 204);
+        }
     }
 
     public function store(Request $request)
@@ -33,9 +46,8 @@ class AddressesController extends Controller
             $address->save();
 
             return response()->json([
-                'message' => "address has been added"
+                'message' => "Address has been added"
             ], 201);
         }
     }
-
 }
