@@ -6,15 +6,24 @@ use Illuminate\Http\Request;
 use App\Address;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * Class AddressesController
+ * @package App\Http\Controllers
+ */
 class AddressesController extends Controller
 {
-    public function index(Request $request)
+
+    /**
+     * Function shows addresses filtering by search if term provided
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function index(Request $request)
     {
         $data = $request->get('search');
 
         $addresses = Address::where('surname', 'like', "%{$data}%")
                     ->orWhere('phone', 'like', "%{$data}%")
-
                     ->paginate(15);
 
         if ($addresses->count()) {
@@ -28,6 +37,11 @@ class AddressesController extends Controller
         }
     }
 
+    /**
+     * Function saves a new address
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $data = Validator::make($request->all(), [
