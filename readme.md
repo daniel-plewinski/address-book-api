@@ -15,5 +15,5 @@ php artisan migrate:refresh --seed
 ### phpunit
 To execute tests run:
 ```
-$vendor/phpunit/phpunit/phpunit
+vendor/phpunit/phpunit/phpunit
 ```
